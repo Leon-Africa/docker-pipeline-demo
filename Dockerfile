@@ -3,7 +3,7 @@ FROM python:3.11-slim AS builder
 WORKDIR /app
 
 # Install minimal build dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends build-essential gcc && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential gcc python3-dev libpq-dev && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 
@@ -11,6 +11,8 @@ RUN pip install --user --no-cache-dir -r requirements.txt
 
 # Production stage
 FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends libpq5 && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -u 1000 appuser
 
