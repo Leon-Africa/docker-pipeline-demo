@@ -46,11 +46,9 @@ spec:
               protocol: TCP
 
           # Inject environment variables from values.yaml
-          env:
-            {{- range $key, $value := .Values.env }}
-            - name: {{ $key }}
-              value: {{ $value | quote }}
-            {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "bookstore.fullname" . }}-config
 
           {{- with .Values.livenessProbe }}
           livenessProbe:
