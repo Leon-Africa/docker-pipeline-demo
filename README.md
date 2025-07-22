@@ -36,7 +36,6 @@ http://localhost:8080/redoc — ReDoc UI
 
 ## Configuration
 
-
 | Variable          | Default                                            | Description                                         |
 | ----------------- | -------------------------------------------------- | --------------------------------------------------- |
 | `DATABASE_URL`    | `postgresql://postgres:postgres@db:5432/bookstore` | PostgreSQL connection string                        |
