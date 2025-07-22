@@ -2,7 +2,6 @@
 
 A RESTful API for managing a bookstore inventory built with FastAPI
 
-
 #### Run the application [Docker]
 
 ```bash
