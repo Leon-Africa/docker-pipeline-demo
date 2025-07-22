@@ -8,6 +8,19 @@ A RESTful API for managing a bookstore inventory built with FastAPI
 COMPOSE_BAKE=true docker compose up --build
 ```
 ````
+[+] Running 5/5
+ ✔ api                                          Built                                                                                                               0.0s 
+ ✔ Network docker-pipeline-demo_default         Created                                                                                                             0.1s 
+ ✔ Volume "docker-pipeline-demo_postgres_data"  Created                                                                                                             0.0s 
+ ✔ Container docker-pipeline-demo-db-1          Created                                                                                                             0.6s 
+ ✔ Container docker-pipeline-demo-api-1         Created     
+````
+
+````
+docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS                            PORTS                                         NAMES
+744db131c55a   postgres:15   "docker-entrypoint.s…"   42 seconds ago   Up 8 seconds (health: starting)   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp   docker-pipeline-demo-db-1
+
 ````
 
 #### Run the application [Helm]
