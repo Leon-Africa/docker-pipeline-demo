@@ -7,15 +7,26 @@ A RESTful API for managing a bookstore inventory built with FastAPI
 ```bash
 COMPOSE_BAKE=true docker compose up --build
 ```
+````
+````
 
 #### Run the application [Helm]
 ```bash
 minikube start
-eval $(minikube docker-env)
-docker build -t docker-pipeline-demo-api:latest .
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm dependency build ./bookstore
-kubectl port-forward svc/bookstore 8080:8080
+helm upgrade --install bookstore ./bookstore -f ./bookstore/values.yaml
 ```
+Once the pods are up:
+````
+kubectl get pods
+NAME                         READY   STATUS    RESTARTS      AGE
+bookstore-7dc8cf5777-4x8p9   1/1     Running   4 (82s ago)   2m39s
+bookstore-postgresql-0       1/1     Running   0             2m39s
+````
+````
+kubectl port-forward svc/bookstore 8080:8080
+````
 
 # Check Docs
 http://localhost:8080/docs — Swagger UI

@@ -9,7 +9,7 @@ replicaCount: 1
 # This sets the container image
 # More info: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: docker-pipeline-demo-api
+  repository: ghcr.io/leon-africa/docker-pipeline-demo
   pullPolicy: IfNotPresent
   tag: latest
 
