@@ -3,10 +3,19 @@
 A RESTful API for managing a bookstore inventory built with FastAPI
 
 
-#### Run the application
+#### Run the application [Docker]
 
 ```bash
 COMPOSE_BAKE=true docker compose up --build
+```
+
+#### Run the application [Helm]
+```bash
+minikube start
+eval $(minikube docker-env)
+docker build -t docker-pipeline-demo-api:latest .
+helm dependency build ./bookstore
+kubectl port-forward svc/bookstore 8080:8080
 ```
 
 # Check Docs
@@ -28,7 +37,6 @@ http://localhost:8080/redoc — ReDoc UI
 
 ## Configuration
 
-All configuration is handled via environment variables in docker-compose.yml:
 
 | Variable          | Default                                            | Description                                         |
 | ----------------- | -------------------------------------------------- | --------------------------------------------------- |
@@ -42,9 +50,3 @@ All configuration is handled via environment variables in docker-compose.yml:
 | `ALLOWED_ORIGINS` | `http://localhost:3000`                            | Comma-separated list of allowed CORS origins        |
 | `DB_POOL_SIZE`    | `10`                                               | SQLAlchemy DB connection pool size                  |
 | `DB_MAX_OVERFLOW` | `20`                                               | Maximum overflow connections beyond pool size       |
-
-# Clean
-
-````
-docker compose down -v
-````
